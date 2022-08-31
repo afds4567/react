@@ -27,3 +27,16 @@ const vdom2 = createElement('p', {},
     )
   );
   ```
+
+3. jsx 기존 가변인자 형식 createElement는 복잡=>markup 형식 적용
+- babel의 react preset(문법변환 규칙의 모음)에 의해 markup형식 입력시 자동으로 변환해줌
+![image](https://user-images.githubusercontent.com/33995840/187645837-aab16079-cf54-4e31-afd2-fa20cd67ccf0.png)
+- React.createElement가 아닌 2.createElement 적용위해 최상단 /* jsx createElement */추가
+![image](https://user-images.githubusercontent.com/33995840/187646321-a6fc8257-c02e-4e9e-a699-435285de2788.png)
+- 2.createElement에서 두 번째 인자 props 비었을 때 null이 아닌 빈배열 전달 위해
+```
+export function createElement(tag, props, ...children) {
+  props = props || {}
+  return{tag,props,children}
+}
+```
