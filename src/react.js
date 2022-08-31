@@ -18,6 +18,7 @@ export function createDOM(node){
   return element;
 }
 export function createElement(tag, props, ...children) {
+  props = props || {}
   return{tag,props,children}
 }
 export function render(vdom, container) {
