@@ -12,6 +12,7 @@ function createDOM(node){
   //element 리턴 
 }
 ```
+
 2. createElement (children은 여러개가 들어올 수 있으므로 배열형태로 입력하기위해 ...가변인자 적용)
 ```
 function createElement(tag,props,...children){
@@ -39,4 +40,22 @@ export function createElement(tag, props, ...children) {
   props = props || {}
   return{tag,props,children}
 }
+```
+
+4. 함수 컴포넌트 Ex)<Title>React 만들기</Title>
+
+- createElement(tag,props,...children)의 tag가 함수인 경우
+
+```
+function Title(props){
+  return(<h1>{props.children}</h1>)
+}
+function createElement(tag,props,...children){
+  if(typeof tag ==='function){
+    if(children.length>0){
+      return tag({
+        ...props,
+        children:children.length===1?children[0]:children,
+      })
+...
 ```
