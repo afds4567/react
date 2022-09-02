@@ -57,5 +57,23 @@ function createElement(tag,props,...children){
         ...props,
         children:children.length===1?children[0]:children,
       })
-...
 ```
+
+5. 클래스 컴포넌트
+- typeof tag === 'function'이고 tag.prototype instanceof Component로 class형 컴포넌트 판단
+
+```
+class Title extends Component{
+  render(){
+    return <h1>{this.props.children}</h1>
+  }
+}
+
+export class Component{
+  constructor(props){
+    this.props=props
+  }
+}
+
+const instance = new tag(makeProps(props,children));
+return instance.render();
